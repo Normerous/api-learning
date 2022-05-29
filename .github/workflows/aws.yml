@@ -40,7 +40,9 @@ env:
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: tomcat-webserver           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
-
+  CLUSTER: false
+  MONGO_DB: secrets.MONGO_DB
+  AMQP_URL: secrets.AMQP_URL
 permissions:
   contents: read
 
