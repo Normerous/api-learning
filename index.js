@@ -38,9 +38,7 @@ var osu = require("node-os-utils");
 //   });
 // }, 2000);
 
-const mongooseURI =
-  "mongodb+srv://warayouthem:KCn8EJfQkPQDTfwl@speedtest.lf2ms.mongodb.net";
-// const mongooseURI = 'mongodb://localhost:27017'
+const mongooseURI = process.env.MONGO_DB
 const mongooseOpt = {
   authSource: "admin",
   useNewUrlParser: true,
@@ -59,7 +57,6 @@ mongoose
   .catch((e) => {
     console.log("error", e);
   });
-console.log("process.env.CLUSTER.", process.env.CLUSTER);
 // messaging.init()
 if (cluster.isMaster && process.env.CLUSTER === "true") {
   //
