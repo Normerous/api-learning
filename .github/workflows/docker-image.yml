@@ -4,6 +4,11 @@ on:
   push:
     branches: [ main ]
 
+env:
+  CLUSTER: false
+  MONGO_DB: secrets.MONGO_DB
+  AMQP_URL: secrets.AMQP_URL
+
 jobs:
 
   build:
@@ -11,6 +16,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v3
+    name: Check out code
+
+    - uses: actions/setup-node@v3
+      with: 
+       node-version: 14
+    - run: npm ci
+
     - uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: warayout/demo-app
