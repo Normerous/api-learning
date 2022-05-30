@@ -15,18 +15,19 @@ jobs:
     environment: production
 
     steps:
-      - name: Checkout
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'npm'
-        - run: npm ci
-        - run: npm test
+    - name: Checkout
+    - uses: actions/checkout@v3
+    - name: Set up Node 16
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+      - run: npm ci
 
-      - name: Build and Push Docker Image
-        uses: mr-smithers-excellent/docker-build-push@v4
-        with:
-          image: warayout/demo-app
-          registry: docker.io
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Build and Push Docker Image
+      uses: mr-smithers-excellent/docker-build-push@v4
+      with:
+        image: warayout/demo-app
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
