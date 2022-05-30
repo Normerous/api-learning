@@ -18,7 +18,6 @@ jobs:
     - name: Checkout
     - uses: actions/checkout@v3
 
-    - name: Build & push Docker image
     - uses: actions/setup-node@v3
       with:
         node-version: 16
