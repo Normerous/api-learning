@@ -1,0 +1,32 @@
+name: Deploy to Docker
+on:
+  push:
+  branches:
+    - main
+env:
+  CLUSTER: false
+  MONGO_DB: secrets.MONGO_DB
+  AMQP_URL: secrets.AMQP_URL
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+        - run: npm ci
+        - run: npm test
+
+      - name: Build and Push Docker Image
+        uses: mr-smithers-excellent/docker-build-push@v4
+        with:
+          image: warayout/demo-app
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
