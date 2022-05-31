@@ -3,6 +3,15 @@ name: Docker Image CI
 on:
   push:
     branches: [ main ]
+    
+env:
+  CLUSTER: false
+  MONGO_DB: ${{ secrets.MONGO_DB }}
+  AMQP_URL: ${{ secrets.AMQP_URL }}
+  REDIS_URL: ${{ secrets.REDIS_URL }}
+  REDIS_PORT: ${{ secrets.REDIS_PORT }}
+  REDIS_USER: ${{ secrets.REDIS_USER }}
+  REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
 
 jobs:
 
@@ -22,12 +31,12 @@ jobs:
     - run: npm ci
       env:
         CLUSTER: false
-        MONGO_DB: secrets.MONGO_DB
-        AMQP_URL: secrets.AMQP_URL
-        REDIS_URL: secrets.REDIS_URL
-        REDIS_PORT: secrets.REDIS_PORT
-        REDIS_USER: secrets.REDIS_USER
-        REDIS_PASSWORD: secrets.REDIS_PASSWORD
+        MONGO_DB: ${{ secrets.MONGO_DB }}
+        AMQP_URL: ${{ secrets.AMQP_URL }}
+        REDIS_URL: ${{ secrets.REDIS_URL }}
+        REDIS_PORT: ${{ secrets.REDIS_PORT }}
+        REDIS_USER: ${{ secrets.REDIS_USER }}
+        REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
 
     - uses: mr-smithers-excellent/docker-build-push@v5
       with:
