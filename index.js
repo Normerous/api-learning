@@ -39,6 +39,7 @@ var osu = require("node-os-utils");
 // }, 2000);
 
 const mongooseURI = process.env.MONGO_DB
+console.log("MOOOO", mongooseURI)
 const mongooseOpt = {
   authSource: "admin",
   useNewUrlParser: true,
