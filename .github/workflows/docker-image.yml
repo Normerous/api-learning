@@ -18,8 +18,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    environment: production
-
+    environment: 
+      CLUSTER: false
+      MONGO_DB: ${{ secrets.MONGO_DB }}
+      AMQP_URL: ${{ secrets.AMQP_URL }}
+      REDIS_URL: ${{ secrets.REDIS_URL }}
+      REDIS_PORT: ${{ secrets.REDIS_PORT }}
+      REDIS_USER: ${{ secrets.REDIS_USER }}
+      REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
     steps:
     - uses: actions/checkout@v3
       name: Check out code
