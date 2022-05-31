@@ -18,10 +18,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
     - uses: actions/checkout@v3
       name: Check out code
+
+    - name: step 1
+      run: echo "The API key is:${{env.MONGO_DB}}"   
 
     - uses: actions/setup-node@v3
       with:
