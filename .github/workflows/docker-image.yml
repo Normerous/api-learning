@@ -30,7 +30,7 @@ jobs:
         --build-arg ARG_REDIS_PORT=$REDIS_PORT
         --build-arg ARG_REDIS_USER=$REDIS_USER
         --build-arg ARG_REDIS_PASSWORD=$REDIS_PASSWORD
-      build .
+        build .
 
     - uses: mr-smithers-excellent/docker-build-push@v5
       with:
