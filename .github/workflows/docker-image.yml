@@ -24,7 +24,7 @@ jobs:
 
     - uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: warayout/demo-app
+        image: warayout/demo-app:lasted
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
@@ -35,3 +35,8 @@ jobs:
         REDIS_PORT: ${{ secrets.REDIS_PORT }}
         REDIS_USER: ${{ secrets.REDIS_USER }}
         REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+
+    - uses: muinmomin/webhook-action@v1.0.0
+      with:
+      url: ${{ secrets.WEBHOOK_URL }}
+      data: "{'content': '🚀 build images success !!!'}"
