@@ -30,7 +30,6 @@ jobs:
     #     cache: 'npm'
     # - run: npm ci
     - uses: mr-smithers-excellent/docker-build-push@v5
-      name: Build, tag, and push the image
       with:
         image: warayout/demo-app
         registry: docker.io
