@@ -24,13 +24,13 @@ jobs:
     - uses: actions/checkout@v3
       name: Check out code
       run: docker \
-    --build-arg ARG_MONGO_DB=$MONGO_DB
-    --build-arg ARG_AMQP_URL=$AMQP_URL
-    --build-arg ARG_REDIS_URL=$REDIS_URL
-    --build-arg ARG_REDIS_PORT=$REDIS_PORT
-    --build-arg ARG_REDIS_USER=$REDIS_USER
-    --build-arg ARG_REDIS_PASSWORD=$REDIS_PASSWORD
-  build .
+        --build-arg ARG_MONGO_DB=$MONGO_DB
+        --build-arg ARG_AMQP_URL=$AMQP_URL
+        --build-arg ARG_REDIS_URL=$REDIS_URL
+        --build-arg ARG_REDIS_PORT=$REDIS_PORT
+        --build-arg ARG_REDIS_USER=$REDIS_USER
+        --build-arg ARG_REDIS_PASSWORD=$REDIS_PASSWORD
+      build .
 
     - uses: mr-smithers-excellent/docker-build-push@v5
       with:
