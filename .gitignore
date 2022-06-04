@@ -27,6 +27,7 @@ local.env
 switcher_backup.env
 
 docker-compose.yml
+docker-compose.yaml
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
