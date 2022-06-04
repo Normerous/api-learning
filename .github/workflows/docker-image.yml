@@ -14,24 +14,13 @@ env:
   REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
     environment: production
 
     steps:
     - uses: actions/checkout@v3
       name: Check out code
-
-    - name: build
-      run: docker build
-        --build-arg ARG_MONGO_DB=${{ secrets.MONGO_DB }}
-        --build-arg ARG_AMQP_URL=${{ secrets.AMQP_URL }}
-        --build-arg ARG_REDIS_URL=${{ secrets.REDIS_URL }}
-        --build-arg ARG_REDIS_PORT=${{ secrets.REDIS_PORT }}
-        --build-arg ARG_REDIS_USER=${{ secrets.REDIS_USER }}
-        --build-arg ARG_REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }} .
 
     - uses: mr-smithers-excellent/docker-build-push@v5
       with:
