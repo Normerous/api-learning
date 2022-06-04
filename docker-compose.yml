@@ -1,8 +1,23 @@
-version: '3.9'
-services:
-  basic-api:
-    build: .
-    ports:
-      - 8000:8000
+# version: '3.9'
+# services:
+#   basic-api:
+#     build: .
+#     ports:
+#       - 8000:8000
     # networks: 
     #   - my-mongo-cluster
+version: '3.9'
+services:
+  app-koa:
+    image: warayout/demo-app:main-356af30
+    restart: always
+    ports:
+      - 8000:8000
+    environment:
+      MONGO_DB: mongodb+srv://warayouthem:KCn8EJfQkPQDTfwl@speedtest.lf2ms.mongodb.net
+      CLUSTER: false
+      AMQP_URL: amqps://ujklnaqx:NVQiVnWYINULVEsDQhVgj3MkcNqqgwcp@mustang.rmq.cloudamqp.com/ujklnaqx
+      REDIS_URL: redis-17048.c295.ap-southeast-1-1.ec2.cloud.redislabs.com
+      REDIS_PORT: 17048
+      REDIS_USER: default
+      REDIS_PASSWORD: Pl7v0ghrMMfTpbdd4Io92oicW6gYK85n
