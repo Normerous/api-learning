@@ -1,6 +1,7 @@
 FROM node:16
 
 WORKDIR /app
+RUN apt-get remove docker docker-engine docker.io containerd runc
 COPY . /app
 ARG ARG_MONGO_DB
 ARG ARG_AMQP_URL
