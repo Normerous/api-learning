@@ -15,13 +15,13 @@ amqp.connect('amqp://localhost:5672', function(error0, connection) {
     });
 
     channel.assertQueue('22', {
-      exclusive: true
+      exclusive: false
     }, function(error2, q) {
       if (error2) {
         throw error2;
       }
       console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q.queue);
-      channel.bindQueue(q.queue, exchange, '');
+      channel.bindQueue('22', exchange, '');
 
       channel.consume(q.queue, function(msg) {
         if(msg.content) {

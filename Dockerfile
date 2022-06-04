@@ -1,9 +1,7 @@
 FROM node:16
 
-WORKDIR /var/source
-
-COPY package*.json ./
+WORKDIR /app
+COPY . /app
 RUN npm ci
-COPY . .
-EXPOSE 8080
+EXPOSE 8000
 CMD [ "node", "index.js" ]

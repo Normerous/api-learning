@@ -8,9 +8,7 @@ const api = require("./src/routes/index");
 const cluster = require("cluster");
 // const control = require("strong-cluster-control");
 const numCPUs = require("os").cpus().length;
-const monitor = require("koa-monitor");
 // const os = require('os').cpus()
-const os = require("os");
 require("dotenv/config");
 // const messaging = require('./src/amqp/index')
 // const { setOptions } = require('koa-session-getter')
@@ -29,17 +27,8 @@ require("dotenv/config");
 //   // don’t need to manually restart the workers
 // })
 
-var osu = require("node-os-utils");
-
-// setInterval(() => {
-//   const mem = osu.mem;
-//   mem.info().then((info) => {
-//     console.log(info);
-//   });
-// }, 2000);
-
 const mongooseURI = process.env.MONGO_DB
-console.log("process.env", process.env)
+console.log("process.env", process.env.MONGO_DB)
 const mongooseOpt = {
   authSource: "admin",
   useNewUrlParser: true,
@@ -102,6 +91,9 @@ if (cluster.isMaster && process.env.CLUSTER === "true") {
   //   next();
   // });
   app.use(api.routes());
+  app.use((ctx) => {
+    ctx.body = { message: '3333333' }
+  });
   app.on("error", (err) => {
     console.log("error", err);
   });
