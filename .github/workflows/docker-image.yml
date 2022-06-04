@@ -29,12 +29,7 @@ jobs:
     #     node-version: 16
     #     cache: 'npm'
     # - run: npm ci
-    - uses: mr-smithers-excellent/docker-build-push@v5
-      with:
-        image: warayout/demo-app
-        registry: docker.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: build env
       env:
         MONGO_DB: ${{ secrets.MONGO_DB }}
         AMQP_URL: ${{ secrets.AMQP_URL }}
@@ -51,3 +46,10 @@ jobs:
           --build-arg ARG_REDIS_USER=$REDIS_USER
           --build-arg ARG_REDIS_PASSWORD=$REDIS_PASSWORD
         build .
+
+    - uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: warayout/demo-app
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
