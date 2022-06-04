@@ -25,20 +25,13 @@ jobs:
       name: Check out code
 
     - name: build
-      env:
-        MONGO_DB: ${{ secrets.MONGO_DB }}
-        AMQP_URL: ${{ secrets.AMQP_URL }}
-        REDIS_URL: ${{ secrets.REDIS_URL }}
-        REDIS_PORT: ${{ secrets.REDIS_PORT }}
-        REDIS_USER: ${{ secrets.REDIS_USER }}
-        REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
       run: docker build
-        --build-arg ARG_MONGO_DB=$MONGO_DB
-        --build-arg ARG_AMQP_URL=$AMQP_URL
-        --build-arg ARG_REDIS_URL=$REDIS_URL
-        --build-arg ARG_REDIS_PORT=$REDIS_PORT
-        --build-arg ARG_REDIS_USER=$REDIS_USER
-        --build-arg ARG_REDIS_PASSWORD=$REDIS_PASSWORD
+        --build-arg ARG_MONGO_DB=${{ secrets.MONGO_DB }}
+        --build-arg ARG_AMQP_URL=${{ secrets.AMQP_URL }}
+        --build-arg ARG_REDIS_URL=${{ secrets.REDIS_URL }}
+        --build-arg ARG_REDIS_PORT=${{ secrets.REDIS_PORT }}
+        --build-arg ARG_REDIS_USER=${{ secrets.REDIS_USER }}
+        --build-arg ARG_REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }}
 
     - uses: mr-smithers-excellent/docker-build-push@v5
       with:
