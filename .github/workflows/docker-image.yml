@@ -32,7 +32,7 @@ jobs:
         REDIS_PORT: ${{ secrets.REDIS_PORT }}
         REDIS_USER: ${{ secrets.REDIS_USER }}
         REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
-      run: docker
+      run: docker build
         --build-arg ARG_MONGO_DB=$MONGO_DB
         --build-arg ARG_AMQP_URL=$AMQP_URL
         --build-arg ARG_REDIS_URL=$REDIS_URL
