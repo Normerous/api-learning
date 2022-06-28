@@ -12,6 +12,7 @@
     "k6": "k6 run test.js",
     "test": "echo \"Testing ..........\"",
     "start2": "nodemon src/amqp/receive4.js",
+    "pretty-quick": "pretty-quick",
     "pre-commit": "pretty-quick --staged"
   },
   "author": "",
