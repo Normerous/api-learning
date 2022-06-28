@@ -9,7 +9,7 @@ const runningNumberSchema = new Schema(
     reference: Number,
     type: {
       type: String,
-      enum: ['pssConsignment', 'bookingNumber', 'kerryConsignment', 'personalBookingNumber', 'pouchNumber'],
+      enum: ['pssConsignment', 'bookingNumber', 'kerryConsignment', 'personalBookingNumber', 'pouchNumber', 'pouchNumber2'],
     },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     isFirstTimeOfMonth: Boolean,

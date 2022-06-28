@@ -21,8 +21,8 @@ amqp.connect('amqp://localhost:5672', function(error0, connection) {
       durable: false
     });
 
-    channel.assertQueue('', {
-      exclusive: true
+    channel.assertQueue('myqueue', {
+      exclusive: false
       }, function(error2, q) {
         if (error2) {
           throw error2;
